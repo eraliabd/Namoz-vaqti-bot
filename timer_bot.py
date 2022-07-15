@@ -1,18 +1,16 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-from telegram import BotCommand, KeyboardButton, ReplyKeyboardMarkup, ChatAction, ReplyKeyboardRemove
+from telegram import BotCommand, KeyboardButton, ReplyKeyboardMarkup, ChatAction, ReplyKeyboardRemove, InlineKeyboardMarkup, InlineKeyboardButton
 import os
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
 from namoz_haqida import text
 
-from database import Database
-db = Database("namoz_db.db")
-
 ADMIN_ID = ""
 TOKEN = ""
 
+from database import Database
+db = Database("namoz_db.db")
 count = 0
-user_info = []
 
 def job():
     os.system('python namoz_timer.py')
@@ -27,15 +25,14 @@ scheduler.start()
 
 def start_command(update, context):
     global count
+    buttons = [
+           [KeyboardButton(text="🕋 Namoz haqida ma'lumot")],
+       ]
     user = update.message.from_user
     db_user = db.get_user_by_chat_id(user.id)
     if not db_user:
         db.create_user(user.id)
-        user_info.append(user.id)
         # print(user_info)
-        buttons = [
-            [KeyboardButton(text="🕋 Namoz haqida ma'lumot")],
-        ]
         # command_list = [
         #     BotCommand(command="start", description="botni ishga tushirish"),
         #     BotCommand(command="info", description="bot haqida ma'lumot"),
@@ -58,7 +55,8 @@ def start_command(update, context):
                      f"👤 Botda ro'yxatdan o'tgan odamlar {count} ta bo'ldi."
             )
     else:
-        update.message.reply_text(text="Bot sizga Namoz vaqtlarini o'z vaqtida eslatib turadi !!!")
+        update.message.reply_text(text="Bot sizga Namoz vaqtlarini o'z vaqtida eslatib turadi !!!",
+                                 reply_markup=ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True))
 
 def info_command(update, context):
     update.message.reply_text(text=f"{update.message.from_user.first_name}, "
@@ -70,6 +68,11 @@ def message_handler(update, context):
     if message == "🕋 Namoz haqida ma'lumot":
         update.message.reply_text(
             text=f"<b>{text}</b>",
+            parse_mode="HTML"
+        )
+    else:
+        update.message.reply_text(
+            text=f"<b>Bot sizga yoqayotgan bo'lsa xursandmiz 😊</b>",
             parse_mode="HTML"
         )
 
