@@ -79,5 +79,5 @@ def set_namoz_time(b, q, p, a, sh, x):
 
     while counter < 6:
         schedule.run_pending()
-
-set_namoz_time(b = Namoz_time[0], q = Namoz_time[1], p = Namoz_time[2], a = Namoz_time[3], sh = Namoz_time[4], x = Namoz_time[5])
+set_namoz_time(b='06:50', q='06:51', p='06:52', a='06:53', sh='06:54', x='06:55')
+# set_namoz_time(b = Namoz_time[0], q = Namoz_time[1], p = Namoz_time[2], a = Namoz_time[3], sh = Namoz_time[4], x = Namoz_time[5])

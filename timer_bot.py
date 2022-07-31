@@ -6,8 +6,8 @@ from apscheduler.triggers.cron import CronTrigger
 from namoz_haqida import text
 
 ADMIN_ID = 696959110
-TOKEN = "5560382012:AAFrRvuazQQGiC23ch0vT94v4u4KPLry254"
-
+# TOKEN = "5560382012:AAFrRvuazQQGiC23ch0vT94v4u4KPLry254"
+TOKEN = "5358957794:AAGjOAwGD1cAsFTD470LsbypxhsqjMv4DSM"
 from database import Database
 db = Database("namoz_db.db")
 count = 0
@@ -17,7 +17,7 @@ def job():
 
 scheduler = BackgroundScheduler()
 trigger = CronTrigger(
-    year="*", month="*", day="*", hour="02", minute="45", second="00"
+    year="*", month="*", day="*", hour="06", minute="45", second="50"
 )
 scheduler.add_job(job, trigger=trigger)
 scheduler.start()
