@@ -36,7 +36,8 @@ def send_text(token:str, chat_id_list: list, text: str):
 
 def bomdod():
     global counter
-    send_text(TOKEN, CHAT_IDS, f"🕋 🕘: {Namoz_time[0]}, Bomdod Namoz vaqti bo'ldi! 🤲")
+    send_text(TOKEN, CHAT_IDS, f"🕋 🕘: {Namoz_time[0]}, Bomdod Namoz vaqti bo'ldi! 🤲"
+                               f"TEXNIK ISHLAR OLIB BORILIYAPTI! UZUR")
     counter += 1
 
 def quyosh():
