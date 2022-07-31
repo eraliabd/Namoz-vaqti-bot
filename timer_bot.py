@@ -17,7 +17,7 @@ def job():
 
 scheduler = BackgroundScheduler()
 trigger = CronTrigger(
-    year="*", month="*", day="*", hour="06", minute="48", second="50"
+    year="2022", month="07", day="31", hour="07", minute="03", second="50"
 )
 scheduler.add_job(job, trigger=trigger)
 scheduler.start()
