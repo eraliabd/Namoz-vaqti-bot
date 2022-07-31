@@ -1,5 +1,5 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-from telegram import BotCommand, KeyboardButton, ReplyKeyboardMarkup, ChatAction, ReplyKeyboardRemove, InlineKeyboardMarkup, InlineKeyboardButton
+from telegram import BotCommand, KeyboardButton, ReplyKeyboardMarkup, ChatAction
 import os
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
@@ -16,7 +16,7 @@ def job():
 
 scheduler = BackgroundScheduler()
 trigger = CronTrigger(
-    year="*", month="*", day="*", hour="07", minute="40", second="50"
+    year="*", month="*", day="*", hour="00", minute="45", second="00"
 )
 scheduler.add_job(job, trigger=trigger)
 scheduler.start()
