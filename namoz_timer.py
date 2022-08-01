@@ -23,7 +23,7 @@ for i in range(len(html_t.select('.p_clock'))):
     time = html_t.select('.p_clock b')
     Namoz_time.append(time[i].text)
 
-p_title = html_t.select('.title_prayer')[0].text
+# p_title = html_t.select('.title_prayer')[0].text
 
 def send_text(token:str, chat_id_list: list, text: str):
     for chat_id in chat_id_list:
@@ -79,5 +79,5 @@ def set_namoz_time(b, q, p, a, sh, x):
 
     while counter < 6:
         schedule.run_pending()
-# set_namoz_time(b='07:29', q='07:30', p='07:31', a='07:32', sh='07:33', x='06:34')
+# set_namoz_time(b='00:01', q='23:58', p='23:59', a='07:32', sh='07:33', x='06:34')
 set_namoz_time(b = Namoz_time[0], q = Namoz_time[1], p = Namoz_time[2], a = Namoz_time[3], sh = Namoz_time[4], x = Namoz_time[5])
