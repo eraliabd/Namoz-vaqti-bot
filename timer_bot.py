@@ -9,11 +9,14 @@ ADMIN_ID = 696959110
 TOKEN = "5560382012:AAFrRvuazQQGiC23ch0vT94v4u4KPLry254"
 
 from database import Database
+
 db = Database("namoz_db.db")
 count = 0
 
+
 def job():
     os.system('python namoz_timer.py')
+
 
 scheduler = BackgroundScheduler()
 trigger = CronTrigger(
@@ -21,13 +24,15 @@ trigger = CronTrigger(
 )
 scheduler.add_job(job, trigger=trigger)
 scheduler.start()
+
+
 # scheduler.shutdown()
 
 def start_command(update, context):
     global count
     buttons = [
-           [KeyboardButton(text="🕋 Namoz haqida ma'lumot")],
-       ]
+        [KeyboardButton(text="🕋 Namoz haqida ma'lumot")],
+    ]
     user = update.message.from_user
     db_user = db.get_user_by_chat_id(user.id)
     if not db_user:
@@ -56,11 +61,13 @@ def start_command(update, context):
             )
     else:
         update.message.reply_text(text="Bot sizga Namoz vaqtlarini o'z vaqtida eslatib turadi !!!",
-                                 reply_markup=ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True))
+                                  reply_markup=ReplyKeyboardMarkup(keyboard=buttons, resize_keyboard=True))
+
 
 def info_command(update, context):
     update.message.reply_text(text=f"{update.message.from_user.first_name}, "
                                    f"bu bot sizga Namoz vaqtini eslatib turish uchun xizmat qiladi!")
+
 
 def message_handler(update, context):
     message = update.message.text
@@ -87,5 +94,7 @@ def main():
 
     updater.start_polling()
     updater.idle()
+
+
 if __name__ == '__main__':
     main()
