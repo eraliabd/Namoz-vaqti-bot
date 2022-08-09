@@ -1,6 +1,6 @@
+import os
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from telegram import BotCommand, KeyboardButton, ReplyKeyboardMarkup, ChatAction
-import os
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
 from namoz_haqida import text
