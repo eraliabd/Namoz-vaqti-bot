@@ -7,6 +7,7 @@ from namoz_haqida import text
 
 ADMIN_ID = 696959110
 TOKEN = "5560382012:AAFrRvuazQQGiC23ch0vT94v4u4KPLry254"
+
 from database import Database
 db = Database("namoz_db.db")
 count = 0
